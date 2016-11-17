@@ -16,42 +16,17 @@ class catalogo_dependencias extends toba_catalogo_items_base
             }
             
             $this->ordenar();//Habilita el signo de colapsar/descolapsar el item
-            $hijos = array();
+            $hijos = array();//Almacena los nodos iniciales
+            //$this->items almacena las relaciones padre/hijos
             foreach ($this->items as $item) {
-                    if ($item->get_id_padre() == $raiz)
-                            $hijos[] = $item;
+                    if (is_null($item->get_id_padre()))//Muestra solo los nodos que no tienen padre, los nodos iniciales
+                        $hijos[] = $item;
+                    
             }
             return $hijos;
         }
     }
-    /*
-    function cargar($opciones, $raiz=null, $incluidos_forzados=array())
-	{
-		if (! is_null($raiz)) {
-			$rs = toba::proyecto()->get_items_menu();
-                        
-			//ei_arbol($rs);
-                        
-			$this->items = array();
-			if (!empty($rs)) {
-				foreach ($rs as $fila) {
-					if ($fila['carpeta']) {
-						$obj = new dependencia( $fila['nombre'], null, $fila['item'], $fila['padre']);
-                                                $obj->contiene(true);
-
-					}else{
-						$obj = new dependencia( $fila['nombre'], null, $fila['item'], $fila['padre']);	
-					}				
-					$obj->set_imagen($fila['imagen_recurso_origen'], $fila['imagen']);				
-					$this->items[$fila['item']] = $obj;
-				}
-				$this->carpeta_inicial = $raiz;
-				$this->mensaje = "";
-				$this->ordenar();
-			}
-		}
-	}
-*/
+    
 	
 }
 ?>

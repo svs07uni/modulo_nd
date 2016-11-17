@@ -1,7 +1,8 @@
 <?php
 class ci_dependencias extends modulo_nd_ci
 {
-	//-----------------------------------------------------------------------------------
+    protected $sigla;
+    //-----------------------------------------------------------------------------------
 	//---- arbol_dependencias -----------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
@@ -28,6 +29,9 @@ class ci_dependencias extends modulo_nd_ci
 
 	function evt__arbol_dependencias__ver_propiedades($nodo)
 	{
+            $this->sigla = $nodo;
+            $dep['sigla'] = $nodo;
+            $this->dep('datos')->tabla('dependencia')->cargar($dep);
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -36,10 +40,16 @@ class ci_dependencias extends modulo_nd_ci
 
 	function conf__form_dependencias(modulo_nd_ei_formulario $form)
 	{
+            if($this->dep('datos')->tabla('dependencia')->esta_cargada()){
+                $dep = $this->dep('datos')->tabla('dependencia')->get(); 
+                
+                return $dep;
+            }
 	}
 
 	function evt__form_dependencias__guardar($datos)
 	{
+            
 	}
 
 	function evt__form_dependencias__cancelar()
