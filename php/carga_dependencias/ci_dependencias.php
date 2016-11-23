@@ -1,7 +1,7 @@
 <?php
 class ci_dependencias extends modulo_nd_ci
 {
-    protected $sigla;
+    
     //-----------------------------------------------------------------------------------
 	//---- arbol_dependencias -----------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -17,9 +17,10 @@ class ci_dependencias extends modulo_nd_ci
                 $nodos = $catalogo->cargar_dependencias($dep);
                 
 		//-- Se configura el arbol
-		$arbol->set_mostrar_filtro_rapido(false);
+		$arbol->set_mostrar_filtro_rapido(true);
 		$arbol->set_nivel_apertura(0);
-                $arbol->set_ancho_nombres('100px');                
+                $arbol->set_ancho_nombres('100px'); 
+                
 		$arbol->set_datos($nodos);
 	}
 
@@ -29,7 +30,6 @@ class ci_dependencias extends modulo_nd_ci
 
 	function evt__arbol_dependencias__ver_propiedades($nodo)
 	{
-            $this->sigla = $nodo;
             $dep['sigla'] = $nodo;
             $this->dep('datos')->tabla('dependencia')->cargar($dep);
 	}
@@ -49,11 +49,14 @@ class ci_dependencias extends modulo_nd_ci
 
 	function evt__form_dependencias__guardar($datos)
 	{
-            
+            $this->dep('datos')->tabla('dependencia')->set($datos);
+            $this->dep('datos')->tabla('dependencia')->sincronizar();
+            $this->dep('datos')->tabla('dependencia')->resetear();
 	}
 
 	function evt__form_dependencias__cancelar()
 	{
+            $this->dep('datos')->tabla('dependencia')->resetear();
 	}
 
 }

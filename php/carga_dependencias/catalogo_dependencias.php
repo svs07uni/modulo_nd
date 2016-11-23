@@ -10,8 +10,8 @@ class catalogo_dependencias extends toba_catalogo_items_base
             foreach($datos_base as $pos=>$fila){
                 $obj = new dependencia( $fila['nombre'], null, $fila['sigla'], $fila['depende_de']);
                 $obj->set_nombre_largo($fila['nombre']);
-                //$obj->set_imagen($fila['imagen_recurso_origen'], $fila['imagen']);
                 $obj->tipo($fila['id_tipo']);
+                
 		$this->items[$fila['sigla']] = $obj;
             }
             

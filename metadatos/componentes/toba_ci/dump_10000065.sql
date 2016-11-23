@@ -132,10 +132,10 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --subclase_archivo
 	'<table>
 	<tbody>
-		<tr>
-			<td style="border:1px solid black" width="500px">
-				[dep id=arbol_dependencias]</td>
+		<tr style="vertical-align:top;line-height:30px;">
 			<td style="border:1px solid black">
+				[dep id=arbol_dependencias]</td>
+			<td style="border:1px solid black;">
 				[dep id=form_dependencias]</td>
 		</tr>
 	</tbody>

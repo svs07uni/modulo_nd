@@ -69,8 +69,8 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	'10000071', --objeto_consumidor
 	'10000068', --objeto_proveedor
 	'dependencia', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
+	'1', --parametros_a
+	'1', --parametros_b
 	NULL, --parametros_c
 	NULL, --inicializar
 	'1'  --orden
@@ -81,8 +81,8 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	'10000071', --objeto_consumidor
 	'10000069', --objeto_proveedor
 	'localidad', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
+	'1', --parametros_a
+	'1', --parametros_b
 	NULL, --parametros_c
 	NULL, --inicializar
 	'2'  --orden
